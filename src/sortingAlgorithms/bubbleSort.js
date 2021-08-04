@@ -10,19 +10,20 @@ function bubbleSortHelper(
     endIdx,
     auxiliaryArray,
     animations
-){
-    for(let i=0;i<=endIdx;i++){
+) {
+    for (let i = 0; i <= endIdx; i++) {
 
-        for(let j=i+1;j<=endIdx;j++){
+        for (let j = 0; j <= endIdx - i - 1; j++) {
 
-            animations.push([i,j,0]);
-            animations.push([i,j,1]);
+            animations.push([j, j + 1, 0]);
+            animations.push([j, j + 1, 1]);
 
-            if(auxiliaryArray[i]>auxiliaryArray[j]){
-                animations.push([i,j,2]);
-                [auxiliaryArray[i],auxiliaryArray[j]]=[auxiliaryArray[j],auxiliaryArray[i]];
+            if (auxiliaryArray[j] > auxiliaryArray[j + 1]) {
+                animations.push([j, j + 1, 2]);
+                [auxiliaryArray[j], auxiliaryArray[j + 1]] = [auxiliaryArray[j + 1], auxiliaryArray[j]];
             }
         }
+
+        animations.push([-1, endIdx - i, 3]);
     }
-    console.log(auxiliaryArray);
 }
